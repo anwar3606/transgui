@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y make fpc lazarus
+          sudo apt-get install -y make fpc lazarus lcl
 
       - name: Set LAZARUS_DIR environment variable
         run: echo "LAZARUS_DIR=/usr/lib/lazarus" >> $GITHUB_ENV
