@@ -15,14 +15,14 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y make fpc
+          sudo apt-get install -y make fpc lazarus
 
       - name: Set LAZARUS_DIR environment variable
         run: echo "LAZARUS_DIR=/usr/lib/lazarus" >> $GITHUB_ENV
 
       - name: Build the application
         run: |
-          # Assuming there's a Makefile in the repo that compiles the Pascal code
+          make -C /usr/lib/lazarus/tools lazres
           make
         env:
           LAZARUS_DIR: ${{ env.LAZARUS_DIR }}
