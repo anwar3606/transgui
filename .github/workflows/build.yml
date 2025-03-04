@@ -22,8 +22,9 @@ jobs:
 
       - name: Build the application
         run: |
-          make -C /usr/lib/lazarus/tools lazres
+          lazbuild -B "transgui.lpi" --lazarusdir=$LAZARUS_DIR
           make
+          make zipdist
         env:
           LAZARUS_DIR: ${{ env.LAZARUS_DIR }}
 
@@ -31,9 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: transgui-binaries
-          path: |
-            build_folder/*.exe
-            build_folder/*.dll
-            build_folder/*.so
-            build_folder/*.dmg
-            build_folder/*.app
+          path: Release/*.zip
