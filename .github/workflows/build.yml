@@ -16,6 +16,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y make fpc lazarus lcl
+          export LAZARUS_DIR=$(lazarus --lazarusdir)
+          echo "LAZARUS_DIR=$LAZARUS_DIR" >> $GITHUB_ENV
 
       - name: Set LAZARUS_DIR environment variable
         run: echo "LAZARUS_DIR=/usr/lib/lazarus" >> $GITHUB_ENV
